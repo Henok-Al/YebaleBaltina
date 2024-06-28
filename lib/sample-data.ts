@@ -1,62 +1,63 @@
 const sampleData = {
-  products: [
-    {
-      name: "LOOSE FIT PIQUE JOGGER SWEATSHIRT",
-      slug: "loose-fit-pique-jogger-sweatshirt",
-      category: "Men's Sweatshirts",
-      images: ["/assets/images/p1-1.jpg", "/assets/images/p1-2.jpeg"],
-      price: "59.99",
-      brand: "Nike",
-      rating: "4.5",
-      numReviews: 10,
-      stock: 5,
-      description:
-        "Lacoste sporting elegance with an urban twist. Fall in love with this loose, cozy sweatshirt in super-comfortable double-face piqué.",
-      isFeatured: true,
-      banner: "/assets/images/banner-1.jpg",
-    },
-    {
-      name: "LACOSTE TENNIS X NOVAK DJOKOVIC SPORTSUIT JACKET",
-      slug: "lacoste-tennis-x-novak-djokovic-sportsuit-jacket",
-      category: "Men's Sweatshirts",
-      images: ["/assets/images/p2-1.jpg", "/assets/images/p2-2.jpg"],
-      price: "199.90",
-      brand: "Lacoste",
-      rating: "4.2",
-      numReviews: 8,
-      stock: 10,
-      description:
-        "Hit the courts like Novak Djokovic with this seamless stretch jacket, made to move your way.",
-      isFeatured: true,
-      banner: "/assets/images/banner-2.jpg",
-    },
-    {
-      name: "SHOWERPROOF SPORTSUIT TRACK PANTS",
-      slug: "showerproof-sportsuit-track-pants",
-      category: "Track Pants",
-      images: ["/assets/images/p3-1.jpg", "/assets/images/p3-2.jpg"],
-      price: "149.95",
-      brand: "Nike",
-      rating: "4.9",
-      numReviews: 3,
-      stock: 0,
-      description:
-        "Stay stylish, whatever the weather. These showerproof track pants are here to protect you from the rain. ",
-    },
-    {
-      name: "MEN'S LACOSTE SPORT FRENCH CAPSULE TRACKSUIT PANTS",
-      slug: "mens-lacoste-sport-french-capsule-tracksuit-pants",
-      category: "Track Pants",
-      images: ["/assets/images/p4-1.jpg", "/assets/images/p4-2.jpg"],
-      price: "125.95",
-      brand: "Lacoste",
-      rating: "3.6",
-      numReviews: 5,
-      stock: 10,
-      description:
-        "A tricolour design brings a distinctive edge to these lightweight tracksuit pants made of diamond taffeta. ",
-    },
-  ],
-};
-
-export default sampleData;
+    products: [
+      {
+        name: "Berbere Spice Blend",
+        slug: "berbere-spice-blend",
+        category: "Ethiopian Spices",
+        images: ["/assets/images/p1-1.jpg", "/assets/images/p1-2.jpeg"],
+        price: "12.99",
+        brand: "BeliBaltina",
+        rating: "4.8",
+        numReviews: 25,
+        stock: 15,
+        description:
+          "A fiery and flavorful blend of spices, perfect for adding a bold taste to your stews and meats. Made with authentic Ethiopian ingredients.",
+        isFeatured: true,
+        banner: "/assets/images/banner-1.jpg",
+      },
+      {
+        name: "Mitmita Spice Mix",
+        slug: "mitmita-spice-mix",
+        category: "Ethiopian Spices",
+        images: ["/assets/images/p2-1.jpg", "/assets/images/p2-2.jpg"],
+        price: "10.99",
+        brand: "BeliBaltina",
+        rating: "4.7",
+        numReviews: 18,
+        stock: 20,
+        description:
+          "A spicy blend of African bird's eye chili, cardamom, and other spices. Ideal for those who love a hot kick in their dishes.",
+        isFeatured: true,
+        banner: "/assets/images/banner-2.jpg",
+      },
+      {
+        name: "Shiro Powder",
+        slug: "shiro-powder",
+        category: "Ethiopian Spices",
+        images: ["/assets/images/p3-1.jpg", "/assets/images/p3-2.jpg"],
+        price: "8.99",
+        brand: "BeliBaltina",
+        rating: "4.9",
+        numReviews: 22,
+        stock: 10,
+        description:
+          "A finely ground powder of roasted chickpeas and spices, perfect for making the traditional Ethiopian Shiro Wot.",
+      },
+      {
+        name: "Korarima (Ethiopian Cardamom)",
+        slug: "korarima",
+        category: "Ethiopian Spices",
+        images: ["/assets/images/p4-1.jpg", "/assets/images/p4-2.jpg"],
+        price: "15.95",
+        brand: "BeliBaltina",
+        rating: "4.6",
+        numReviews: 12,
+        stock: 8,
+        description:
+          "Known as Ethiopian cardamom, Korarima has a unique flavor that adds depth to your dishes. Perfect for both sweet and savory recipes.",
+      },
+    ],
+  };
+  
+  export default sampleData;
+  
