@@ -24,7 +24,7 @@ const sampleData = {
         brand: "BeliBaltina",
         rating: "4.7",
         numReviews: 18,
-        stock: 20,
+        stock: 0,
         description:
           "A spicy blend of African bird's eye chili, cardamom, and other spices. Ideal for those who love a hot kick in their dishes.",
         isFeatured: true,
