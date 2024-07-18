@@ -14,7 +14,7 @@ export async function getLatestProducts() {
 }
 
 export async function getProductBySlug(slug: string) {
-    return await db.query.products.findFirst({
-      where: eq(products.slug, slug),
-    })
-  }
+  return await db.query.products.findFirst({
+    where: eq(products.slug, slug),
+  });
+}
