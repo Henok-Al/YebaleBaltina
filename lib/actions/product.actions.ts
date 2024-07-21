@@ -6,6 +6,7 @@ import db from "@/db/drizzle";
 import { products } from "@/db/schema";
 
 export async function getLatestProducts() {
+  //finds multiple records from the products table
   const data = await db.query.products.findMany({
     orderBy: [desc(products.createdAt)],
     limit: 4,
