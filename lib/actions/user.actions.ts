@@ -72,7 +72,7 @@ export const SignOut = async () => {
   await signOut();
 };
  
-
+//get user id
 export async function getUserById(userId: string) {
   const user = await db.query.users.findFirst({
     where: (users, { eq }) => eq(users.id, userId),
