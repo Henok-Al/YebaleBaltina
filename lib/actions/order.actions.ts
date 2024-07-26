@@ -53,6 +53,28 @@ export async function getMyOrders({
   };
 }
 
+//GET
+export async function getAllOrders({
+  limit = PAGE_SIZE,
+  page,
+}: {
+  limit?: number;
+  page: number;
+}) {
+  const data = await db.query.orders.findMany({
+    orderBy: [desc(products.createdAt)],
+    limit,
+    offset: (page - 1) * limit,
+    with: { user: { columns: { name: true } } },
+  });
+  const dataCount = await db.select({ count: count() }).from(orders);
+
+  return {
+    data,
+    totalPages: Math.ceil(dataCount[0].count / limit),
+  };
+}
+
 // CREATE
 export const createOrder = async () => {
   try {
@@ -103,6 +125,20 @@ export const createOrder = async () => {
     return { success: false, message: formatError(error) };
   }
 };
+
+// DELETE
+export async function deleteOrder(id: string) {
+  try {
+    await db.delete(orders).where(eq(orders.id, id));
+    revalidatePath("/admin/orders");
+    return {
+      success: true,
+      message: "Order deleted successfully",
+    };
+  } catch (error) {
+    return { success: false, message: formatError(error) };
+  }
+}
 
 // UPDATE
 export async function createPayPalOrder(orderId: string) {
@@ -208,14 +244,13 @@ export const updateOrderToPaid = async ({
   });
 };
 
-
 export async function getOrderSummary() {
-  const ordersCount = await db.select({ count: count() }).from(orders)
-  const productsCount = await db.select({ count: count() }).from(products)
-  const usersCount = await db.select({ count: count() }).from(users)
+  const ordersCount = await db.select({ count: count() }).from(orders);
+  const productsCount = await db.select({ count: count() }).from(products);
+  const usersCount = await db.select({ count: count() }).from(users);
   const ordersPrice = await db
     .select({ sum: sum(orders.totalPrice) })
-    .from(orders)
+    .from(orders);
 
   const salesData = await db
     .select({
@@ -223,14 +258,14 @@ export async function getOrderSummary() {
       totalSales: sql<number>`sum(${orders.totalPrice})`.mapWith(Number),
     })
     .from(orders)
-    .groupBy(sql`1`)
+    .groupBy(sql`1`);
   const latestOrders = await db.query.orders.findMany({
     orderBy: [desc(orders.createdAt)],
     with: {
       user: { columns: { name: true } },
     },
     limit: 6,
-  })
+  });
   return {
     ordersCount,
     productsCount,
@@ -238,5 +273,5 @@ export async function getOrderSummary() {
     ordersPrice,
     salesData,
     latestOrders,
-  }
+  };
 }
