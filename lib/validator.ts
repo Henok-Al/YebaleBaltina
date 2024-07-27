@@ -1,8 +1,8 @@
 import * as z from "zod";
 import { formatNumberWithDecimal } from "./utils";
 import { PAYMENT_METHODS } from "./constants";
-import { createInsertSchema } from "drizzle-zod";
-import { orderItems, orders } from "@/db/schema";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { orderItems, orders, products } from "@/db/schema";
 
 // USER
 export const signInFormSchema = z.object({
@@ -82,6 +82,25 @@ export const insertOrderItemSchema = createInsertSchema(orderItems, {
 });
 
 export const updateProfileSchema = z.object({
-  name: z.string().min(3, 'Name must be at least 3 characters'),
-  email: z.string().email().min(3, 'Email must be at least 3 characters'),
-})
+  name: z.string().min(3, "Name must be at least 3 characters"),
+  email: z.string().email().min(3, "Email must be at least 3 characters"),
+});
+
+// PRODUCT
+export const insertProductSchema = createSelectSchema(products, {
+  images: z.array(z.string()).min(1, "Product must have at least one image"),
+  stock: z.coerce.number().min(0, "Stock must be at least 0"),
+}).omit({
+  id: true,
+  rating: true,
+  numReviews: true,
+  createdAt: true,
+});
+export const updateProductSchema = createSelectSchema(products, {
+  images: z.array(z.string()).min(1, "Product must have at least one image"),
+  stock: z.coerce.number().min(0, "Stock must be at least 0"),
+}).omit({
+  rating: true,
+  numReviews: true,
+  createdAt: true,
+});
